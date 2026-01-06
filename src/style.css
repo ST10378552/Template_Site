@@ -1,69 +1,89 @@
-/* GLOBAL */
-body {
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&family=Space+Grotesk:wght@300;500;700&display=swap');
+
+/* --- GLOBAL CORE --- */
+* {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #0e0e0e;
-  color: #fff;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* NAVBAR */
+body {
+  background-color: #050505;
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Custom Forge Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #00ffcc; border-radius: 10px; }
+
+/* --- FORGED NAVBAR (EVEN SPACING) --- */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 40px;
-  background: rgba(20, 20, 20, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  width: 100%;
+  z-index: 2000;
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: 0.3s ease;
+  display: flex;
+  justify-content: space-between; /* Professional even spacing */
+  align-items: center;
+  padding: 1.2rem 5%;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.navbar.scrolled {
-  padding: 10px 40px;
-  background: rgba(10, 10, 10, 0.95);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* LOGO */
 .navbar .logo {
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  background: linear-gradient(135deg, #7b1fa2, #9b59b6, #00eaff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.navbar .logo:hover {
-  transform: scale(1.06);
-}
-
-/* NAV LINKS */
-.navbar nav a {
-  margin: 0 18px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  letter-spacing: -2px;
+  color: #fff;
   text-decoration: none;
-  font-weight: 500;
-  color: #e6e6e6;
+}
+
+/* Replaces the dot with a glowing cyan effect */
+.navbar .logo span {
+  color: #00ffcc;
+  text-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem; /* Wide even spacing between links */
+}
+
+.navbar nav a {
+  text-decoration: none;
+  color: #888;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   transition: 0.3s ease;
   position: relative;
-  padding-bottom: 4px;
 }
 
-/* Animated underline */
+.navbar nav a:hover {
+  color: #00ffcc;
+  transform: translateY(-2px);
+}
+
+/* Cyan accent underline */
 .navbar nav a::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -5px;
   left: 0;
   width: 0%;
   height: 2px;
-  background: linear-gradient(135deg, #7b1fa2, #00eaff);
+  background: #00ffcc;
   transition: 0.3s ease;
 }
 
@@ -71,165 +91,75 @@ body {
   width: 100%;
 }
 
-.navbar nav a:hover {
-  color: #00eaff;
-  transform: translateY(-2px);
-}
-
-/* PAGE SECTIONS */
+/* --- PAGE STRUCTURE --- */
 .page {
-  padding: 80px 40px;
+  padding: 120px 5% 80px;
   text-align: center;
-  animation: fadeIn 1s ease;
 }
 
 .page h1 {
-  font-size: 3rem;
-  background: linear-gradient(135deg, #7b1fa2, #00eaff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -4px;
+  margin-bottom: 30px;
+}
+
+/* The "Stroke" Effect for Forged Titles */
+.gradient-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #00ffcc;
+  background: none; /* Removed old purple gradient */
 }
 
 .page p {
-  color: #ccc;
-  max-width: 900px;
-  margin: 15px auto;
-  font-size: 1.2rem;
-  line-height: 1.6rem;
-}
-
-.page img {
-  margin-top: 25px;
-  max-width: 100%;
-  border-radius: 18px;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
-  transition: 0.3s ease;
-}
-
-.page img:hover {
-  transform: scale(1.03);
-}
-
-/* ANIMATION */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-/* Smooth fade animations */
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 1.3s ease forwards;
-}
-
-.fade-in-delay {
-  opacity: 0;
-  animation: fadeIn 1.3s ease forwards;
-  animation-delay: 0.4s;
-}
-
-.fade-in-delay-2 {
-  opacity: 0;
-  animation: fadeIn 1.3s ease forwards;
-  animation-delay: 0.8s;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* HERO */
-.hero-section {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.hero-section .hero-image {
-  width: 100%;
-  margin-top: 25px;
-  border-radius: 18px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-  animation: fadeIn 1.5s ease forwards;
-}
-
-.gradient-text {
-  font-size: 48px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #7b1fa2, #9b59b6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.subtitle {
-  font-size: 18px;
-  color: #444;
-  margin-top: 10px;
-}
-
-/* SECTIONS */
-.info-section, .team-section {
-  margin-top: 70px;
-}
-
-.section-text {
+  color: #888;
   max-width: 700px;
   margin: 0 auto 40px;
-  color: #555;
-  font-size: 17px;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-/* FEATURES GRID */
-.features-grid {
+/* --- GRID & CARDS --- */
+.features-grid, .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
 }
 
-.feature-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 16px;
-  transition: 0.3s;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+.feature-card, .team-card {
+  background: #0d0d0d; /* Deep Onyx */
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0; /* Industrial sharp corners */
+  transition: 0.4s ease;
 }
 
-.feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+.feature-card:hover, .team-card:hover {
+  border-color: #00ffcc;
+  background: rgba(0, 255, 204, 0.02);
+  transform: translateY(-10px);
 }
 
-.feature-card img {
+.feature-card img, .team-card img {
   width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
+  border-radius: 0;
+  filter: grayscale(1);
+  transition: 0.5s ease;
 }
 
-/* TEAM GRID */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
+.feature-card:hover img, .team-card:hover img {
+  filter: grayscale(0);
 }
 
-.team-card {
-  text-align: center;
-  padding: 20px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  transition: 0.3s;
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.team-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
-
-.team-card img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 15px;
-}
+.fade-in { animation: fadeIn 1s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.fade-in-delay { animation: fadeIn 1s cubic-bezier(0.2, 1, 0.3, 1) 0.3s forwards; opacity: 0; }
+.fade-in-delay-2 { animation: fadeIn 1s cubic-bezier(0.2, 1, 0.3, 1) 0.6s forwards; opacity: 0; }

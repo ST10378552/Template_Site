@@ -1,205 +1,182 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&family=Space+Grotesk:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Outfit:wght@300;700;900&display=swap');
 
 :root {
-  --neon: #00ffcc;
-  --deep: #050505;
-  --card-bg: #0e0e0e;
-  --border: rgba(255, 255, 255, 0.08);
+  --neon-cyan: #00ffcc;
+  --bg-deep: #050505;
+  --glass-bg: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --text-dim: #888;
 }
 
-.services-page {
-  background: var(--deep);
-  color: white;
-  font-family: 'Space Grotesk', sans-serif;
-  overflow-x: hidden;
+body {
+  background-color: var(--bg-deep);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
 }
 
-.container {
-  max-width: 1250px;
-  margin: 0 auto;
-  padding: 0 5%;
-}
+.container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
 
-/* --- HERO --- */
-.services-hero {
-  padding: 150px 0 100px;
+/* --- FORGE HERO --- */
+.hero-services {
+  padding: 120px 0 80px;
   position: relative;
-  text-align: center;
+  background: radial-gradient(circle at top right, rgba(0, 255, 204, 0.05), transparent);
 }
 
-.services-badge {
-  background: rgba(0, 255, 204, 0.1);
-  color: var(--neon);
-  padding: 6px 18px;
-  border-radius: 50px;
-  font-weight: 700;
+.badge-outline {
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  padding: 5px 15px;
+  font-family: 'Outfit';
+  font-size: 0.7rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
-.hero-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(3rem, 7vw, 5.5rem);
+.display-heavy {
+  font-family: 'Outfit';
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
   font-weight: 900;
-  line-height: 1;
-  margin: 2rem 0;
-  letter-spacing: -2px;
+  line-height: 0.85;
+  letter-spacing: -4px;
 }
 
-.hero-subtitle {
-  max-width: 650px;
-  margin: 0 auto;
-  font-size: 1.25rem;
-  color: #888;
-  line-height: 1.6;
+.text-cyan {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--neon-cyan);
+  text-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
 }
 
-.hero-mesh-gradient {
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 100%; height: 100%;
-  background: radial-gradient(circle at 50% -20%, rgba(0, 255, 204, 0.15), transparent 70%);
-  z-index: -1;
-}
-
-/* --- GRID --- */
-.services-main-grid {
+/* --- CAPABILITY CARDS --- */
+.stack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  padding-bottom: 120px;
+  margin: 60px 0;
 }
 
-.service-card-v3 {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  padding: 40px;
-  border-radius: 24px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  display: flex;
-  flex-direction: column;
+.forge-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 50px 40px;
+  transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.service-card-v3:hover {
-  border-color: var(--neon);
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 255, 204, 0.05);
+.forge-card:hover {
+  border-color: var(--neon-cyan);
+  transform: translateY(-10px);
+  background: rgba(0, 255, 204, 0.01);
 }
 
-.service-card-v3.active {
-  background: linear-gradient(135deg, #0e0e0e 0%, #151515 100%);
-  border-color: rgba(0, 255, 204, 0.3);
+.forge-card h3 {
+  font-family: 'Outfit';
+  font-size: 2rem;
+  margin: 20px 0;
+  line-height: 1;
 }
 
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+.forge-card p {
+  color: var(--text-dim);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
 }
 
-.service-icon { font-size: 2.5rem; }
-.service-tag { color: #555; text-transform: uppercase; font-weight: 700; font-size: 0.75rem; letter-spacing: 2px; }
-
-.service-card-v3 h3 { font-family: 'Outfit'; font-size: 1.8rem; margin-bottom: 1rem; line-height: 1.2; }
-.service-card-v3 p { color: #888; font-size: 1rem; line-height: 1.6; flex-grow: 1; }
-
-.service-list {
-  list-style: none;
-  padding: 0;
-  margin: 2rem 0;
-  border-top: 1px solid var(--border);
-  padding-top: 1.5rem;
+.card-num {
+  font-family: 'Outfit';
+  font-size: 0.8rem;
+  color: var(--neon-cyan);
+  font-weight: 900;
+  opacity: 0.5;
 }
 
-.service-list li {
-  margin-bottom: 10px;
-  color: #ccc;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
+.card-img-wrap {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
 }
 
-.service-list li::before {
-  content: "→";
-  color: var(--neon);
-  margin-right: 10px;
+.card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) brightness(0.5);
+  transition: 0.5s;
 }
 
-.btn-learn {
-  background: transparent;
-  color: var(--neon);
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  padding: 0;
+.forge-card:hover .card-img-wrap img {
+  filter: grayscale(0) brightness(0.8);
+  transform: scale(1.1);
 }
 
-/* --- VISUAL BREAK --- */
-.services-visual-break {
+/* --- TECHNICAL SPEC MATRIX --- */
+.tech-spec {
   padding: 100px 0;
-  background: #080808;
+  border-top: 1px solid var(--glass-border);
 }
 
-.flex-row {
+.spec-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 100px;
   align-items: center;
 }
 
-.tilt-img {
-  width: 100%;
-  border-radius: 20px;
-  transform: perspective(1000px) rotateY(-10deg);
-  box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
+.spec-title {
+  font-family: 'Outfit';
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 20px;
 }
 
-.metric-row { display: flex; gap: 40px; margin-top: 2rem; }
-.metric strong { display: block; font-size: 2.5rem; color: var(--neon); font-family: 'Outfit'; }
-.metric span { color: #555; font-size: 0.8rem; text-transform: uppercase; }
+.spec-title span { color: var(--neon-cyan); }
+
+.matrix-table {
+  background: #0a0a0a;
+  border: 1px solid var(--glass-border);
+  padding: 40px;
+}
+
+.matrix-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.matrix-row span { color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; font-weight: 700; }
+.matrix-row strong { color: #fff; font-family: 'Outfit'; letter-spacing: 1px; }
 
 /* --- CTA --- */
-.cta-gradient-box {
-  background: linear-gradient(135deg, #0a0a0a, #111);
-  padding: 100px 40px;
-  border-radius: 40px;
+.footer-cta {
+  padding: 100px 0;
   text-align: center;
-  border: 1px solid var(--border);
-  margin: 100px 0;
 }
 
-.btn-neon-glow {
-  background: var(--neon);
-  color: black;
+.btn-forge {
+  background: var(--neon-cyan);
+  color: #000;
   border: none;
   padding: 20px 50px;
-  border-radius: 8px;
+  font-family: 'Outfit';
   font-weight: 900;
   font-size: 1.1rem;
   text-transform: uppercase;
-  margin-top: 2rem;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0, 255, 204, 0.3);
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
   transition: 0.3s;
 }
 
-.btn-neon-glow:hover { transform: scale(1.05); background: white; }
+.btn-forge:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(0, 255, 204, 0.3);
+}
 
-/* --- ANIMATIONS --- */
-.pop { animation: pop 0.6s ease-out; }
-.slide-up { animation: slideUp 0.8s ease-out; }
-.fade-in { animation: fadeIn 1.2s ease-out; }
-
-@keyframes pop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-@keyframes slideUp { 0% { transform: translateY(30px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-
-/* RESPONSIVE */
-@media (max-width: 968px) {
-  .flex-row { grid-template-columns: 1fr; text-align: center; }
-  .metric-row { justify-content: center; }
-  .tilt-img { transform: none; }
-  .hero-title { font-size: 3rem; }
+@media (max-width: 1000px) {
+  .stack-grid, .spec-grid { grid-template-columns: 1fr; }
 }

@@ -1,36 +1,41 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 
-// Import your components - Ensure folder and file names match EXACTLY
+// Import your components
 import HomePage from './components/HomePage.jsx';
 import AboutUs from './components/AboutUs.jsx';
 import Services from './components/Services.jsx';
 import Contact from './components/Contact.jsx';
 
-// Import Global Styles
+// Global Styles
 import './App.css';
+
+// Automatically scroll to top on page change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Functions to handle menu state
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="app-wrapper">
         {/* PREMIUM NAVIGATION */}
         <header className="navbar">
           <div className="nav-container">
             <Link to="/" className="logo-link" onClick={closeMenu}>
-              <h1 className="logo">STUDIO<span className="dot">.</span></h1>
+              <h1 className="logo">FORGED<span className="cyan-glow">DIGITAL</span></h1>
             </Link>
             
-            {/* HAMBURGER ICON (Visible only on mobile) */}
+            {/* MOBILE HAMBURGER */}
             <button 
               className={`menu-toggle ${isMenuOpen ? 'active' : ''}`} 
-              onClick={toggleMenu}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle navigation"
             >
               <span className="bar"></span>
@@ -38,12 +43,12 @@ function App() {
               <span className="bar"></span>
             </button>
 
-            {/* NAV LINKS (Desktop & Mobile Overlay) */}
+            {/* NAV LINKS: Spaced professionally from the Logo */}
             <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-              <Link to="/" className="nav-item" onClick={closeMenu}>Home</Link>
-              <Link to="/about" className="nav-item" onClick={closeMenu}>About</Link>
-              <Link to="/services" className="nav-item" onClick={closeMenu}>Services</Link>
-              <Link to="/contact" className="nav-cta" onClick={closeMenu}>Work With Us</Link>
+              <Link to="/" className="nav-item" onClick={closeMenu}>Studio</Link>
+              <Link to="/about" className="nav-item" onClick={closeMenu}>Method</Link>
+              <Link to="/services" className="nav-item" onClick={closeMenu}>Solutions</Link>
+              <Link to="/contact" className="nav-cta" onClick={closeMenu}>Initiate Blueprint</Link>
             </nav>
           </div>
         </header>
@@ -61,7 +66,7 @@ function App() {
         {/* MINIMAL FOOTER */}
         <footer className="simple-footer">
           <div className="container">
-            <p>&copy; 2025 YourStudio. Built with Technical Grit.</p>
+            <p>&copy; 2026 FORGED DIGITAL. Built with Technical Grit.</p>
           </div>
         </footer>
       </div>

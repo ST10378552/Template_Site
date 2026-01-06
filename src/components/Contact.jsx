@@ -2,110 +2,89 @@ import React from "react";
 import "./Contact.css";
 
 export default function Contact() {
+  const email = "hello@forgeddigital.com";
+  const phone = "+1 (800) 123-4567";
+  const address = "123 Innovation Drive, Tech City, NY";
+
   return (
     <div className="contact-page">
       {/* 1. HERO HEADER */}
       <header className="contact-hero">
         <div className="container">
-          <span className="contact-badge pop">Available for New Projects</span>
+          <span className="contact-badge pop">FORGING NEW PARTNERSHIPS</span>
           <h1 className="hero-title slide-up">
-            Let’s Build the <span className="neon-text">Next</span> Big Thing.
+            Ready to <span className="neon-text">Evolve</span> Your Stack?
           </h1>
           <p className="hero-subtitle fade-in">
-            Whether you have a fully-baked idea or just a spark of inspiration, 
-            our engineers are ready to help you launch.
+            Connect directly with our engineering lead. Our raw data is below for manual contact, or use the one-click protocols to launch an instant session.
           </p>
         </div>
       </header>
 
-      {/* 2. CONTACT GRID */}
+      {/* 2. DIRECT ACTION MATRIX (Visible Info + Links) */}
       <section className="contact-main container">
-        <div className="contact-wrapper">
+        <div className="action-grid">
           
-          {/* LEFT: INFO PANELS */}
-          <div className="contact-info-panel">
-            <div className="info-card">
-              <span className="info-icon">📧</span>
-              <div>
-                <h4>Email Us</h4>
-                <p>hello@yourstudio.com</p>
-              </div>
-            </div>
-
-            <div className="info-card">
-              <span className="info-icon">📞</span>
-              <div>
-                <h4>Call the Studio</h4>
-                <p>+1 (800) 123-4567</p>
-              </div>
-            </div>
-
-            <div className="info-card">
-              <span className="info-icon">📍</span>
-              <div>
-                <h4>Global HQ</h4>
-                <p>123 Innovation Drive, Tech City, NY</p>
-              </div>
-            </div>
-
-            <div className="live-status-card">
-              <div className="status-header">
-                <span className="status-dot"></span>
-                <span>Current Response Time</span>
-              </div>
-              <strong>&lt; 2 Hours</strong>
+          {/* EMAIL PROTOCOL */}
+          <div className="action-card gmail">
+            <span className="action-icon">✉</span>
+            <div className="action-content">
+              <h4>Email Consultation</h4>
+              <p className="raw-data">{email}</p>
+              <a href={`mailto:${email}`} className="action-button">
+                Open In Gmail →
+              </a>
             </div>
           </div>
 
-          {/* RIGHT: CYBER FORM */}
-          <div className="contact-form-container">
-            <form className="cyber-form">
-              <div className="form-row">
-                <div className="input-group">
-                  <label>Full Name</label>
-                  <input type="text" placeholder="John Doe" />
-                </div>
-                <div className="input-group">
-                  <label>Email Address</label>
-                  <input type="email" placeholder="john@example.com" />
-                </div>
-              </div>
+          {/* WHATSAPP PROTOCOL */}
+          <div className="action-card whatsapp">
+            <span className="action-icon">💬</span>
+            <div className="action-content">
+              <h4>WhatsApp Direct</h4>
+              <p className="raw-data">{phone}</p>
+              <a href={`https://wa.me/18001234567`} target="_blank" rel="noreferrer" className="action-button">
+                Start Chat →
+              </a>
+            </div>
+          </div>
 
-              <div className="input-group">
-                <label>Project Type</label>
-                <select>
-                  <option>Web Development</option>
-                  <option>Mobile App</option>
-                  <option>AI Automation</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div className="input-group">
-                <label>How can we help?</label>
-                <textarea rows="5" placeholder="Tell us about your vision..."></textarea>
-              </div>
-
-              <button type="submit" className="btn-submit-glow">
-                Send Message <span>→</span>
-              </button>
-            </form>
+          {/* MAPS PROTOCOL */}
+          <div className="action-card maps">
+            <span className="action-icon">📍</span>
+            <div className="action-content">
+              <h4>Global HQ</h4>
+              <p className="raw-data">{address}</p>
+              <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="action-button">
+                View On Maps →
+              </a>
+            </div>
           </div>
 
         </div>
       </section>
 
-      {/* 3. MAP/IMAGE SECTION */}
+      {/* 3. STATUS STRIP */}
+      <section className="status-strip container">
+        <div className="live-status-bar">
+          <div className="status-indicator">
+            <span className="status-dot"></span>
+            <span>SYSTEMS ONLINE // EST RESPONSE TIME: <strong>&lt; 1 HOUR</strong></span>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. FINAL MAP VISUAL */}
       <section className="contact-map-area container">
         <div className="map-placeholder">
           <img 
-            src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80" 
-            alt="World Map Connection" 
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" 
+            alt="Global Digital Network" 
             className="world-map-img"
           />
           <div className="map-overlay">
-            <h3>We Work Globally.</h3>
-            <p>From Durban to San Francisco, we serve clients in 15+ countries.</p>
+            <h3>Forged Remotely.</h3>
+            <p>Deployed Globally.</p>
           </div>
         </div>
       </section>

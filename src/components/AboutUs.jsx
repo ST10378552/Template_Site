@@ -1,119 +1,108 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./AboutUs.css";
 
 export default function AboutUs() {
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('reveal-active');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
+  }, []);
+
   return (
-    <div className="about-page">
-      {/* 1. ANIMATED HERO SECTION */}
-      <header className="about-hero">
-        <div className="hero-glow-bg"></div>
-        <div className="container hero-flex">
-          <div className="hero-text-content">
-            <span className="about-badge fade-in">Our Journey</span>
-            <h1 className="about-title slide-up">
-              Engineering the <span className="neon-text">Impossible</span> Since 2019.
-            </h1>
-            <p className="about-sub fade-in-delayed">
-              We aren't just another agency. We are a high-performance lab where 
-              ambitious ideas are forged into market-leading digital products.
-            </p>
-            <div className="hero-stats-row pop-in">
-              <div className="mini-stat"><strong>180+</strong><span>Builds</span></div>
-              <div className="mini-stat"><strong>99%</strong><span>Uptime</span></div>
-              <div className="mini-stat"><strong>24/7</strong><span>Support</span></div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* 2. THE STORY SECTION (Interactive Grid) */}
-      <section className="about-story container">
-        <div className="story-grid">
-          <div className="story-visuals">
-             <div className="main-frame">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Team" className="story-img" />
-                <div className="floating-experience">6+ Years of Grit</div>
-             </div>
-             <div className="sub-frame">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="Meeting" />
-             </div>
-          </div>
-
-          <div className="story-text">
-            <h2 className="section-title">The Blueprint</h2>
-            <p className="lead">What started as a three-person dev shop in a garage has evolved into a global powerhouse of digital innovation.</p>
-            <p>We believe that code is an art form. Every line we write is designed to be scalable, secure, and human-centric. We don't just build features; we build legacies for our clients.</p>
-            
-            <div className="mission-vision-v2">
-              <div className="mv-item">
-                <i className="mv-icon">🎯</i>
-                <div>
-                  <h4>Our Mission</h4>
-                  <p>To eliminate digital friction and empower brands through flawless engineering.</p>
-                </div>
-              </div>
-              <div className="mv-item">
-                <i className="mv-icon">🚀</i>
-                <div>
-                  <h4>Our Vision</h4>
-                  <p>To set the global gold standard for AI-integrated software development.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. CORE VALUES (Cards with Hover Effects) */}
-      <section className="about-values">
+    <div className="about-editorial-root">
+      {/* SECTION 1: MANIFESTO */}
+      <section className="manifesto-hero">
         <div className="container">
-          <h2 className="center-title">What Drives Us</h2>
-          <div className="values-grid">
-            <div className="value-card">
-              <div className="value-number">01</div>
-              <h3>Radical Transparency</h3>
-              <p>No jargon. No hidden fees. Just honest communication and clear roadmaps.</p>
+          <div className="manifesto-grid">
+            <div className="manifesto-text reveal-on-scroll">
+              <span className="eyebrow">THE BLUEPRINT</span>
+              <h1 className="editorial-title">
+                FORGING <br/> THE <em>FUTURE</em> <br/> OF STATIC.
+              </h1>
+              <p className="manifesto-lead">
+                ForgedDigital was founded to solve the "Bloat Problem." Most web agencies 
+                stack libraries until the site breaks. We do the opposite: we strip 
+                everything back to pure, high-performance engineering.
+              </p>
             </div>
-            <div className="value-card active">
-              <div className="value-number">02</div>
-              <h3>Velocity & Precision</h3>
-              <p>We move fast, but we never break the things that matter. Quality is non-negotiable.</p>
-            </div>
-            <div className="value-card">
-              <div className="value-number">03</div>
-              <h3>Future-Proofing</h3>
-              <p>We build with tomorrow’s tech, ensuring your product stays relevant for years.</p>
+            <div className="manifesto-visual reveal-on-scroll" style={{ transitionDelay: '0.2s' }}>
+              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Forged Architecture" />
+              <div className="visual-tag">FORGED // 2026</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. LOGO MARQUEE */}
-      <section className="logo-marquee-section">
-        <p className="marquee-label">POWERING TEAMS AT</p>
-        <div className="marquee-wrapper">
-          <div className="marquee-content">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"/>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"/>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta_Platforms_Inc._logo.svg" alt="Meta"/>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple"/>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"/>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"/>
+      {/* SECTION 2: THE CHRONICLE (STARTS 2024) */}
+      <section className="technical-chronicle">
+        <div className="container">
+          <div className="chronicle-header reveal-on-scroll">
+            <h2 className="editorial-title" style={{ fontSize: '3.5rem' }}>ENGINEERING <span>DNA</span></h2>
+          </div>
+          <div className="chronicle-grid">
+            <div className="chronicle-item reveal-on-scroll">
+              <span className="year">2024</span>
+              <h3>The Zero-Database Shift</h3>
+              <p>We officially pivoted to 100% static architecture. By removing the database layer, we eliminated 99.9% of common web vulnerabilities for our clients.</p>
+            </div>
+            <div className="chronicle-item reveal-on-scroll" style={{ transitionDelay: '0.1s' }}>
+              <span className="year">2025</span>
+              <h3>Edge Propagation</h3>
+              <p>We expanded our infrastructure to a global mesh network. Our sites now deploy to 200+ edge locations, ensuring sub-0.5s load times globally.</p>
+            </div>
+            <div className="chronicle-item reveal-on-scroll" style={{ transitionDelay: '0.2s' }}>
+              <span className="year">2026</span>
+              <h3>The Forged Standard</h3>
+              <p>Today, we lead the industry in "Bespoke Static" engineering—combining unhackable code with elite-tier digital aesthetics.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 5. FINAL CTA */}
-      <section className="about-footer-cta">
-        <div className="cta-box">
-          <h2>Ready to write your own story?</h2>
-          <p>Let's build the next big thing together. Our experts are standing by.</p>
-          <div className="cta-actions">
-            <button className="btn-neon">Launch My Project</button>
-            <button className="btn-outline-white">View Case Studies</button>
+      {/* SECTION 3: THE OPERATIONS LAB (INFO RICH) */}
+      <section className="studio-lab">
+        <div className="container">
+          <div className="lab-header reveal-on-scroll">
+             <span className="eyebrow">THE LABORATORY</span>
+             <h2 className="editorial-title" style={{ fontSize: '3rem' }}>INSIDE THE <span>FORGE</span></h2>
+          </div>
+          <div className="lab-bento-grid">
+            <div className="bento-main reveal-on-scroll">
+               <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" alt="Cyber Security Lab" />
+               <div className="bento-info">
+                  <h4>Security First</h4>
+                  <p>Our lab monitors global threat levels to ensure our static assets remain unreachable by conventional attack vectors.</p>
+               </div>
+            </div>
+            <div className="bento-side reveal-on-scroll" style={{ transitionDelay: '0.1s' }}>
+                <div className="side-box">
+                    <strong>100/100</strong>
+                    <span>Lighthouse Perf Score</span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Precision Tech" />
+            </div>
+            <div className="bento-bottom reveal-on-scroll" style={{ transitionDelay: '0.2s' }}>
+               <div className="bento-info">
+                  <h4>Global Mesh</h4>
+                  <p>We utilize Rust-based edge workers to handle dynamic logic without sacrificing the speed of static files.</p>
+               </div>
+               <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Global Network" />
+            </div>
           </div>
         </div>
       </section>
+
+      {/* SECTION 4: CALL TO ACTION */}
+      <footer className="about-footer-statement reveal-on-scroll">
+        <div className="container">
+          <h2 className="editorial-title">READY TO <span>BUILD?</span></h2>
+          <button className="btn-launch">Initiate Blueprint</button>
+        </div>
+      </footer>
     </div>
   );
 }
