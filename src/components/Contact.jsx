@@ -2,7 +2,7 @@ import React from "react";
 import "./Contact.css";
 
 export default function Contact() {
-  const email = "hello@forgeddigital.com";
+  const email = "hello@forgedigital.com";
   const phone = "+1 (800) 123-4567";
   const address = "123 Innovation Drive, Tech City, NY";
 

@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AboutUs.css";
 
 export default function AboutUs() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -24,7 +27,7 @@ export default function AboutUs() {
                 FORGING <br/> THE <em>FUTURE</em> <br/> OF STATIC.
               </h1>
               <p className="manifesto-lead">
-                ForgedDigital was founded to solve the "Bloat Problem." Most web agencies 
+                ForgeDigital was founded to solve the "Bloat Problem." Most web agencies 
                 stack libraries until the site breaks. We do the opposite: we strip 
                 everything back to pure, high-performance engineering.
               </p>
@@ -37,11 +40,11 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* SECTION 2: THE CHRONICLE (STARTS 2024) */}
+      {/* SECTION 2: THE CHRONICLE */}
       <section className="technical-chronicle">
         <div className="container">
           <div className="chronicle-header reveal-on-scroll">
-            <h2 className="editorial-title" style={{ fontSize: '3.5rem' }}>ENGINEERING <span>DNA</span></h2>
+            <h2 className="editorial-title-small">ENGINEERING <span>DNA</span></h2>
           </div>
           <div className="chronicle-grid">
             <div className="chronicle-item reveal-on-scroll">
@@ -63,12 +66,12 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* SECTION 3: THE OPERATIONS LAB (INFO RICH) */}
+      {/* SECTION 3: THE OPERATIONS LAB */}
       <section className="studio-lab">
         <div className="container">
           <div className="lab-header reveal-on-scroll">
              <span className="eyebrow">THE LABORATORY</span>
-             <h2 className="editorial-title" style={{ fontSize: '3rem' }}>INSIDE THE <span>FORGE</span></h2>
+             <h2 className="editorial-title-small">INSIDE THE <span>FORGE</span></h2>
           </div>
           <div className="lab-bento-grid">
             <div className="bento-main reveal-on-scroll">
@@ -88,7 +91,7 @@ export default function AboutUs() {
             <div className="bento-bottom reveal-on-scroll" style={{ transitionDelay: '0.2s' }}>
                <div className="bento-info">
                   <h4>Global Mesh</h4>
-                  <p>We utilize Rust-based edge workers to handle dynamic logic without sacrificing the speed of static files.</p>
+                  <p>We utilize Rust-based edge workers to handle dynamic logic without sacrificing speed.</p>
                </div>
                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Global Network" />
             </div>
@@ -100,7 +103,10 @@ export default function AboutUs() {
       <footer className="about-footer-statement reveal-on-scroll">
         <div className="container">
           <h2 className="editorial-title">READY TO <span>BUILD?</span></h2>
-          <button className="btn-launch">Initiate Blueprint</button>
+          {/* NAVIGATE TO CONTACT PAGE */}
+          <button className="btn-launch" onClick={() => navigate('/contact')}>
+            Initiate Blueprint
+          </button>
         </div>
       </footer>
     </div>

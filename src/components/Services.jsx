@@ -13,7 +13,7 @@ export default function Services() {
             <span className="text-cyan">Digital Assets</span>
           </h1>
           <p style={{ maxWidth: '600px', color: '#888', fontSize: '1.2rem', marginTop: '30px' }}>
-            We eliminate technical debt. Forged Digital builds static infrastructure 
+            We eliminate technical debt. Forge Digital builds static infrastructure 
             designed for 100% uptime and sub-second global response.
           </p>
         </div>

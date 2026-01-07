@@ -26,124 +26,141 @@ body {
   min-height: 100vh;
 }
 
-/* --- FORGED NAVBAR (SPACING FIXED) --- */
+/* --- REFINED NAVBAR --- */
 .navbar {
   position: fixed;
   top: 0; 
   left: 0; 
   width: 100%;
   z-index: 2000;
-  background: rgba(5, 5, 5, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.4s ease;
 }
 
 .nav-container {
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 1.2rem 5%;
+  padding: 1rem 4%;
   display: flex;
-  /* This pushes the logo and nav links to opposite ends */
   justify-content: space-between; 
   align-items: center;
+  height: 90px;
 }
 
 .logo-link { text-decoration: none; }
 .logo {
   font-family: 'Outfit', sans-serif;
   font-weight: 900;
-  font-size: 1.8rem;
-  letter-spacing: -2px;
+  font-size: 1.6rem;
+  letter-spacing: -1.5px;
   color: #fff;
+  transition: opacity 0.3s ease;
 }
+
+.logo:hover { opacity: 0.8; }
 
 .cyan-glow {
   color: #00ffcc;
-  text-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+  text-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  /* Gap between 'Studio', 'Method', etc. */
-  gap: 3.5rem; 
+  gap: 2.5rem; /* Reduced gap to prevent squashing on medium screens */
 }
 
 .nav-item {
   text-decoration: none;
-  color: #888;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: 0.3s ease;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  opacity: 0.7;
 }
 
 .nav-item:hover {
+  opacity: 1;
   color: #00ffcc;
-  transform: translateY(-2px);
 }
 
 .nav-cta {
   text-decoration: none;
-  background: #00ffcc;
-  color: #000;
-  padding: 12px 28px;
-  font-weight: 900;
-  font-family: 'Outfit';
+  border: 1px solid #00ffcc;
+  color: #00ffcc;
+  padding: 10px 24px;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
-  transition: 0.3s ease;
-  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 4px; /* More modern than the polygon for a clean look */
 }
 
 .nav-cta:hover {
-  background: #fff;
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(0, 255, 204, 0.4);
+  background: #00ffcc;
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+}
+
+/* --- MOBILE TOGGLE --- */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 2px;
+  margin: 5px auto;
+  background-color: #fff;
+  transition: 0.3s ease;
 }
 
 /* --- STRUCTURE --- */
 .content-body {
-  margin-top: 100px; /* Space for the fixed navbar */
-  padding-bottom: 80px;
-}
-
-/* --- REUSABLE EDITORIAL CLASSES --- */
-.editorial-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -4px;
-}
-
-.editorial-title span {
-  color: transparent;
-  -webkit-text-stroke: 1.5px #00ffcc;
+  margin-top: 90px; 
+  min-height: calc(100vh - 170px);
 }
 
 /* --- FOOTER --- */
 .simple-footer {
-  padding: 60px 0;
+  padding: 40px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   text-align: center;
-  font-size: 0.8rem;
-  color: #444;
+  font-size: 0.75rem;
+  color: #666;
 }
 
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 968px) {
+  .menu-toggle { display: block; }
+
   .nav-links {
     position: fixed;
-    top: 0; right: -100%;
-    width: 100%; height: 100vh;
+    top: 90px; 
+    right: -100%;
+    width: 100%; 
+    height: calc(100vh - 90px);
     background: #050505;
     flex-direction: column;
-    justify-content: center;
-    transition: 0.5s ease;
+    padding-top: 4rem;
+    gap: 2rem;
+    transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
   }
+
   .nav-links.open { right: 0; }
-  .menu-toggle { display: block; z-index: 3000; }
+
+  /* Mobile Bar Animations */
+  .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+  .menu-toggle.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 }

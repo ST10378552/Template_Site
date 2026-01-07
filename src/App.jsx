@@ -13,7 +13,11 @@ import './App.css';
 // Automatically scroll to top on page change
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  useEffect(() => { 
+    window.scrollTo(0, 0); 
+    // Set Document Title for SEO
+    document.title = "ForgeDigital";
+  }, [pathname]);
   return null;
 }
 
@@ -29,7 +33,7 @@ function App() {
         <header className="navbar">
           <div className="nav-container">
             <Link to="/" className="logo-link" onClick={closeMenu}>
-              <h1 className="logo">FORGED<span className="cyan-glow">DIGITAL</span></h1>
+              <h1 className="logo">FORGE<span className="cyan-glow">DIGITAL</span></h1>
             </Link>
             
             {/* MOBILE HAMBURGER */}
@@ -43,12 +47,12 @@ function App() {
               <span className="bar"></span>
             </button>
 
-            {/* NAV LINKS: Spaced professionally from the Logo */}
+            {/* NAV LINKS */}
             <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-              <Link to="/" className="nav-item" onClick={closeMenu}>Studio</Link>
-              <Link to="/about" className="nav-item" onClick={closeMenu}>Method</Link>
-              <Link to="/services" className="nav-item" onClick={closeMenu}>Solutions</Link>
-              <Link to="/contact" className="nav-cta" onClick={closeMenu}>Initiate Blueprint</Link>
+              <Link to="/" className="nav-item" onClick={closeMenu}>Home</Link>
+              <Link to="/about" className="nav-item" onClick={closeMenu}>About</Link>
+              <Link to="/services" className="nav-item" onClick={closeMenu}>Services</Link>
+              <Link to="/contact" className="nav-cta" onClick={closeMenu}>Contact</Link>
             </nav>
           </div>
         </header>
@@ -66,7 +70,7 @@ function App() {
         {/* MINIMAL FOOTER */}
         <footer className="simple-footer">
           <div className="container">
-            <p>&copy; 2026 FORGED DIGITAL. Built with Technical Grit.</p>
+            <p>&copy; 2026 FORGE DIGITAL. Built with Technical Grit.</p>
           </div>
         </footer>
       </div>
