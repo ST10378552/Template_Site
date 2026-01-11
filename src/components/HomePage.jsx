@@ -3,87 +3,146 @@ import "./HomePage.css";
 
 export default function HomePage() {
   useEffect(() => {
+    const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('active');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
       });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
     document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+    
+    // Smooth reveal for the hero text
+    const textReveal = document.querySelector('.hero-giant-text');
+    if(textReveal) textReveal.classList.add('reveal');
   }, []);
 
   return (
     <div className="forged-root">
-      {/* SECTION 1: HIGH-IMPACT HERO */}
-      <header className="hero-v10">
-        <div className="hero-grid-v10">
-          <div className="hero-text-main animate-on-scroll">
-            <div className="glitch-tag">CORE // SYSTEMS // 2026</div>
-            <h1 className="hero-giant-text">
-              FORGED <br/>
-              <span className="accent-glow">DIGITAL</span>
-            </h1>
-            <p className="hero-sub">
-              Engineering high-speed, unhackable static fortresses for the next 
-              generation of digital commerce.
-            </p>
-          </div>
-          <div className="hero-visual-v10 animate-on-scroll">
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" alt="Cyber Tech" />
-            <div className="scanline"></div>
-          </div>
+      {/* BACKGROUND GRAIN OVERLAY */}
+      <div className="noise-overlay"></div>
+      
+      <nav className="glass-nav">
+        <div className="nav-container">
+          <div className="brand">FORGE<span>//</span>DIGITAL</div>
+          <div className="nav-tag">DBN.SOUTH_AFRICA</div>
+          <a href="#contact" className="contact-trigger">/ CONNECT</a>
         </div>
-      </header>
+      </nav>
 
-      {/* SECTION 2: BENTO TECHNICAL GRID */}
-      <section className="tech-bento">
-        <div className="bento-container">
-          <div className="bento-item tall animate-on-scroll">
-            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Global Data" />
-            <div className="bento-content">
-                <h3>GLOBAL EDGE</h3>
-                <p>Deployed to 200+ edge locations for sub-millisecond delivery.</p>
+      <section className="hero-v2">
+        <div className="hero-main-grid">
+          <div className="hero-left">
+            <div className="status-indicator">
+              <span className="blink"></span> SYSTEM_ONLINE // 2026_PROTOCOL
+            </div>
+            <h1 className="hero-giant-text">
+              FORGING <br/>
+              <span className="outline-text">IMMUTABLE</span> <br/>
+              WEBSITES
+            </h1>
+            <p className="hero-subtext">
+              Two BSc graduates from <strong>Varsity College Durban North</strong> building the next 
+              generation of high-speed, unhackable static fortresses for local innovators.
+            </p>
+            <div className="hero-actions">
+              <button className="btn-glitch">START_PROJECT</button>
             </div>
           </div>
           
-          <div className="bento-item wide animate-on-scroll">
-            <div className="bento-content">
-                <span className="bento-num">01</span>
-                <h3>ZERO VULNERABILITY</h3>
-                <p>By removing the database, we remove the target. Your site is mathematically unhackable.</p>
-            </div>
-            <img src="https://web-assets.esetstatic.com/tn/-x700/wls/2025/08-25/winrar/winrar-zeroday-vulnerability-romcom-apt-eset-research.jpeg" alt="Server" />
-          </div>
-
-          <div className="bento-item animate-on-scroll">
-            <div className="bento-content">
-                <h3>PURE CODE</h3>
-                <p>No plugins. No bloat. Just forged performance.</p>
-            </div>
-          </div>
-
-          <div className="bento-item animate-on-scroll highlight-bento">
-            <div className="bento-content">
-                <h3>READY TO UPGRADE?</h3>
-                <p>Let's discuss your technical roadmap.</p>
+          <div className="hero-right animate-on-scroll">
+            <div className="image-frame">
+              <div className="frame-line top"></div>
+              <div className="frame-line right"></div>
+              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Core Tech" />
+              <div className="scan-bar"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: TESTIMONIALS (MINIMAL DARK) */}
-      <section className="voices-v10">
-        <div className="voices-container">
-            <div className="voice-card animate-on-scroll">
-                <p>"The migration reduced our server costs to zero while doubling our speed."</p>
-                <cite>MARCUS REED // CTO AT VERTEX</cite>
-            </div>
-            <div className="voice-card animate-on-scroll">
-                <p>"Unbreakable. We've survived heavy traffic spikes without a single millisecond of downtime."</p>
-                <cite>ELARA VANCE // FOUNDER OF AETHER</cite>
-            </div>
+      {/* MARQUEE EFFECT */}
+      <div className="ticker-wrap">
+        <div className="ticker">
+          {[...Array(10)].map((_, i) => (
+            <span key={i}>FAST. SECURE. BESPOKE. DURBAN BORN. // </span>
+          ))}
+        </div>
+      </div>
+
+      {/* BENTO GRID RE-IMAGINED */}
+<section className="features-grid">
+  <div className="bento-layout">
+    
+    {/* BOX 01 - TALL */}
+    <div className="bento-box tall animate-on-scroll">
+      <div className="box-num">01</div>
+      <div className="box-content">
+        <h3>ZERO-DAY<br/>INFRASTRUCTURE</h3>
+        <p>We deploy static fortresses. By removing the database layer, we eliminate 99% of common web vulnerabilities before they even exist.</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=800&q=80" className="box-bg" alt="Security" />
+    </div>
+
+    {/* BOX 02 - WIDE */}
+    <div className="bento-box wide animate-on-scroll">
+      <div className="box-num">02</div>
+      <div className="box-content">
+        <h3>RAW VELOCITY</h3>
+        <p>Our architecture bypasses traditional server-side processing. Your content is served from the edge, resulting in near-instant load states.</p>
+        <div className="decor-lines">
+          <div className="line"></div>
+          <div className="line" style={{width: '60px', opacity: 1, backgroundColor: 'var(--mint)'}}></div>
+          <div className="line"></div>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" className="box-bg" alt="Speed" />
+    </div>
+
+    {/* BOX 03 - MINI */}
+    <div className="bento-box animate-on-scroll">
+      <div className="box-num">03</div>
+      <div className="box-content">
+        <h3>DIRECT<br/>ACCESS</h3>
+        <p>Elite engineering, no bloat. You collaborate directly with the architects, ensuring zero loss in translation.</p>
+      </div>
+    </div>
+
+    {/* BOX 04 - THE CTA */}
+    <div className="bento-box highlight animate-on-scroll" id="contact">
+      <div className="box-content">
+        <h3 style={{WebkitTextFillColor: 'black', background: 'none'}}>INITIALIZE<br/>PROJECT?</h3>
+        <p style={{color: 'black', opacity: 0.7, fontWeight: 500}}>Ready to build the unhackable?</p>
+        <button className="btn-minimal">
+          ESTABLISH_CONNECTION
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+      {/* REFINED TESTIMONIALS */}
+      <section className="testimonials-modern">
+        <div className="test-grid">
+          <div className="test-card animate-on-scroll">
+            <p>"The security level they provided gave us total peace of mind. These guys are the real deal."</p>
+            <cite>— STEVE H. // FINTECH SOLUTIONS</cite>
+          </div>
+          <div className="test-card animate-on-scroll">
+            <p>"Fastest turnaround I've seen in Durban. The site feels like it's from 5 years in the future."</p>
+            <cite>— AMARA M. // CREATIVE DIRECTOR</cite>
+          </div>
         </div>
       </section>
+
+      <footer className="footer-v3">
+        <div className="footer-bottom">
+          <span>FORGE DIGITAL // CORE_SYSTEM_V1</span>
+          <span>©2026 // DBN // ZA</span>
+        </div>
+      </footer>
     </div>
   );
 }

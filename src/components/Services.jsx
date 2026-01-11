@@ -1,90 +1,139 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Services.css";
 
 export default function Services() {
+  useEffect(() => {
+    const observerOptions = { threshold: 0.15 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
+  }, []);
+
+  const scrollToContact = (e) => {
+    e.preventDefault();
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="services-root">
-      {/* 1. HERO SECTION */}
-      <header className="hero-services">
+      {/* AMBIENT BACKGROUND GLOWS */}
+      <div className="aura-purple"></div>
+      <div className="aura-mint"></div>
+
+      {/* --- HERO SECTION --- */}
+      <section className="services-hero reveal-on-scroll">
         <div className="container">
-          <span className="badge-outline">Solutions // 2026</span>
-          <h1 className="display-heavy">
-            Forging <br />
-            <span className="text-cyan">Digital Assets</span>
-          </h1>
-          <p style={{ maxWidth: '600px', color: '#888', fontSize: '1.2rem', marginTop: '30px' }}>
-            We eliminate technical debt. Forge Digital builds static infrastructure 
-            designed for 100% uptime and sub-second global response.
-          </p>
-        </div>
-      </header>
-
-      {/* 2. THE CAPABILITY STACK */}
-      <section className="container">
-        <div className="stack-grid">
-          {/* Service 01 */}
-          <div className="forge-card">
-            <span className="card-num">/ 01</span>
-            <h3>Static <br/> Ecosystems</h3>
-            <p>We build unbreakable sites using Next.js and TypeScript. No databases to hack, no plugins to fail.</p>
-            <div className="card-img-wrap">
-              <img src="https://www.flashmobcomputing.org/media/2022/01/StaticCodeAnalysis.jpg" alt="Infrastructure" />
+          <div className="hero-split">
+            <div className="hero-content">
+              <span className="eyebrow-tag">02 // CAPABILITIES</span>
+              <h1 className="editorial-header">
+                ELITE <br/> <span className="gradient-text">STATIC</span> <br/> FORGING
+              </h1>
+              <p className="hero-subline">
+                We strip away the bloat. Using pure React architecture, we build 
+                high-velocity digital fortresses that load instantly and never break.
+              </p>
             </div>
-          </div>
-
-          {/* Service 02 */}
-          <div className="forge-card">
-            <span className="card-num">/ 02</span>
-            <h3>Edge <br/> Computing</h3>
-            <p>Deploying directly to the global edge network. Your site loads instantly in every corner of the world.</p>
-            <div className="card-img-wrap">
-              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Global Network" />
-            </div>
-          </div>
-
-          {/* Service 03 */}
-          <div className="forge-card">
-            <span className="card-num">/ 03</span>
-            <h3>Security <br/> Hardening</h3>
-            <p>Deep-layer forensics and code auditing to ensure your digital presence is a fortress against intrusion.</p>
-            <div className="card-img-wrap">
-              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Security" />
+            <div className="hero-visual">
+              <div className="visual-frame">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Cyber Tech" />
+                <div className="frame-border"></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. TECHNICAL SPECIFICATION */}
-      <section className="tech-spec">
+      {/* --- SERVICE GRID --- */}
+      <section className="services-grid-container">
+        <div className="container">
+          <div className="modern-grid">
+            <div className="service-feature reveal-on-scroll">
+              <div className="feature-top">
+                <span className="num">01</span>
+                <h3>IMPERVIOUS <br/> ARCHITECTURE</h3>
+              </div>
+              <div className="feature-body">
+                <p>No databases. No vulnerabilities. We build 100% static ecosystems that are invisible to common attack vectors.</p>
+                <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=600&q=80" alt="Logic" />
+              </div>
+              <button className="learn-more" onClick={scrollToContact}>ENQUIRE_NOW</button>
+            </div>
+
+            <div className="service-feature reveal-on-scroll" style={{ transitionDelay: '0.2s' }}>
+              <div className="feature-top">
+                <span className="num">02</span>
+                <h3>EDGE-FIRST <br/> SPEED</h3>
+              </div>
+              <div className="feature-body">
+                <p>Your site lives on the Vercel global edge. Content is served from the closest node to your user for zero latency.</p>
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Global" />
+              </div>
+              <button className="learn-more" onClick={scrollToContact}>ENQUIRE_NOW</button>
+            </div>
+
+            <div className="service-feature reveal-on-scroll" style={{ transitionDelay: '0.4s' }}>
+              <div className="feature-top">
+                <span className="num">03</span>
+                <h3>BESPOKE <br/> VISUALS</h3>
+              </div>
+              <div className="feature-body">
+                <p>No templates. We hand-code every pixel in VS Code to ensure your brand stands out with high-end digital aesthetics.</p>
+                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=600&q=80" alt="Design" />
+              </div>
+              <button className="learn-more" onClick={scrollToContact}>ENQUIRE_NOW</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- TECHNICAL SPECIFICATION (THE TABLE) --- */}
+      <section className="tech-spec reveal-on-scroll">
         <div className="container">
           <div className="spec-grid">
             <div className="spec-info">
-              <h2 className="spec-title">The <span>Standard</span></h2>
-              <p style={{ color: '#666', lineHeight: '1.8' }}>
-                Every project we forge follows a strict technical blueprint. We do not use templates. 
-                We do not use page builders. We build pure, optimized code.
+              <h2 className="spec-title">THE <span>FORGE</span> <br/> PROTOCOL</h2>
+              <p className="spec-lead">
+                Every project we forge follows a strict technical blueprint. 
+                We build pure, optimized code in React for maximum security.
               </p>
-              <div style={{ marginTop: '40px', display: 'flex', gap: '40px' }}>
-                 <div><strong style={{ display: 'block', fontSize: '2rem', color: 'var(--neon-cyan)' }}>0.4s</strong><span style={{ fontSize: '0.7rem', color: '#444', textTransform: 'uppercase' }}>Avg. Latency</span></div>
-                 <div><strong style={{ display: 'block', fontSize: '2rem', color: 'var(--neon-cyan)' }}>100/100</strong><span style={{ fontSize: '0.7rem', color: '#444', textTransform: 'uppercase' }}>Lighthouse Score</span></div>
+              <div className="stats-row">
+                  <div className="stat-box">
+                    <strong className="neon-text">SUB-1S</strong>
+                    <span>LOAD_VELOCITY</span>
+                  </div>
+                  <div className="stat-box">
+                    <strong className="neon-text">100%</strong>
+                    <span>UPTIME_GAUGE</span>
+                  </div>
               </div>
             </div>
             <div className="matrix-table">
-              <div className="matrix-row"><span>Architecture</span><strong>Next.js Static / TS</strong></div>
-              <div className="matrix-row"><span>Logic Layer</span><strong>Rust / Edge Workers</strong></div>
-              <div className="matrix-row"><span>Deployment</span><strong>Global CDN / Vercel</strong></div>
+              <div className="matrix-row"><span>Architecture</span><strong>React Static / JS</strong></div>
+              <div className="matrix-row"><span>Development</span><strong>Visual Studio Code</strong></div>
+              <div className="matrix-row"><span>Deployment</span><strong>Vercel Edge Network</strong></div>
               <div className="matrix-row"><span>Security</span><strong>AES-256 / SSL-E</strong></div>
-              <div className="matrix-row"><span>Performance</span><strong>Brotli / Gzip-9</strong></div>
+              <div className="matrix-row"><span>Logic Layer</span><strong>Pure JavaScript</strong></div>
+              <div className="matrix-row"><span>Data Layer</span><strong>Zero-Database Shift</strong></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. FINAL CALL */}
-      <footer className="footer-cta">
+      {/* --- FINAL CTA --- */}
+      <footer className="services-footer reveal-on-scroll">
         <div className="container">
-           <h2 className="display-heavy" style={{ fontSize: '3rem', marginBottom: '40px' }}>Ready to <span className="text-cyan">Forge?</span></h2>
-           <button className="btn-forge">Initiate Blueprint</button>
+          <h2 className="editorial-header-small">READY TO <span className="mint-text">FORGE?</span></h2>
+          <button className="btn-heavy-cyan" onClick={scrollToContact}>INITIALIZE_BUILD</button>
         </div>
       </footer>
     </div>

@@ -1,62 +1,66 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Contact.css";
 
 export default function Contact() {
-  const email = "hello@forgedigital.com";
-  const phone = "+1 (800) 123-4567";
-  const address = "123 Innovation Drive, Tech City, NY";
+  const email = "forgedigital001@gmail.com";
+  const phone = "+27 (000) 000-0000"; 
+  const address = "Durban, KwaZulu-Natal, South Africa";
+  
+  const mapsSearchUrl = "https://www.google.com/maps/search/Durban+South+Africa";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="contact-page">
       {/* 1. HERO HEADER */}
       <header className="contact-hero">
         <div className="container">
-          <span className="contact-badge pop">FORGING NEW PARTNERSHIPS</span>
-          <h1 className="hero-title slide-up">
-            Ready to <span className="neon-text">Evolve</span> Your Stack?
+          <span className="contact-badge">FORGING NEW PARTNERSHIPS</span>
+          <h1 className="hero-title">
+            Ready to <span className="neon-text">Evolve</span> <br/> Your Stack?
           </h1>
-          <p className="hero-subtitle fade-in">
-            Connect directly with our engineering lead. Our raw data is below for manual contact, or use the one-click protocols to launch an instant session.
+          <p className="hero-subtitle">
+            Connect directly with our engineering lead. We deploy high-performance static fortresses 
+            for innovators. Launch a session via the protocols below.
           </p>
         </div>
       </header>
 
-      {/* 2. DIRECT ACTION MATRIX (Visible Info + Links) */}
+      {/* 2. DIRECT ACTION MATRIX */}
       <section className="contact-main container">
         <div className="action-grid">
           
-          {/* EMAIL PROTOCOL */}
           <div className="action-card gmail">
-            <span className="action-icon">✉</span>
+            <span className="action-icon">01</span>
             <div className="action-content">
-              <h4>Email Consultation</h4>
+              <h4>Email Protocol</h4>
               <p className="raw-data">{email}</p>
               <a href={`mailto:${email}`} className="action-button">
-                Open In Gmail →
+                Initialize Mail →
               </a>
             </div>
           </div>
 
-          {/* WHATSAPP PROTOCOL */}
           <div className="action-card whatsapp">
-            <span className="action-icon">💬</span>
+            <span className="action-icon">02</span>
             <div className="action-content">
-              <h4>WhatsApp Direct</h4>
-              <p className="raw-data">{phone}</p>
-              <a href={`https://wa.me/18001234567`} target="_blank" rel="noreferrer" className="action-button">
+              <h4>Instant Sync</h4>
+              <p className="raw-data">WhatsApp Direct</p>
+              <a href={`https://wa.me/27000000000`} target="_blank" rel="noreferrer" className="action-button">
                 Start Chat →
               </a>
             </div>
           </div>
 
-          {/* MAPS PROTOCOL */}
           <div className="action-card maps">
-            <span className="action-icon">📍</span>
+            <span className="action-icon">03</span>
             <div className="action-content">
-              <h4>Global HQ</h4>
+              <h4>Local Node</h4>
               <p className="raw-data">{address}</p>
-              <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="action-button">
-                View On Maps →
+              <a href={mapsSearchUrl} target="_blank" rel="noreferrer" className="action-button">
+                Global GPS →
               </a>
             </div>
           </div>
@@ -69,22 +73,27 @@ export default function Contact() {
         <div className="live-status-bar">
           <div className="status-indicator">
             <span className="status-dot"></span>
-            <span>SYSTEMS ONLINE // EST RESPONSE TIME: <strong>&lt; 1 HOUR</strong></span>
+            <span>SYSTEMS ONLINE // EST RESPONSE: <strong>&lt; 1 HOUR</strong></span>
           </div>
         </div>
       </section>
 
-      {/* 4. FINAL MAP VISUAL */}
+      {/* 4. REPAIRED MAP VISUAL */}
       <section className="contact-map-area container">
-        <div className="map-placeholder">
-          <img 
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" 
-            alt="Global Digital Network" 
-            className="world-map-img"
-          />
+        <div className="map-wrapper">
+          <iframe 
+            title="Durban Map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110643.0487574226!2d30.916895847353136!3d-29.84752840509653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7aa000109ef05%3A0x6bf003463a562095!2sDurban!5e0!3m2!1sen!2sza!4v1715456000000!5m2!1sen!2sza" 
+            width="100%" 
+            height="500" 
+            style={{ border: 0 }} 
+            allowFullScreen="" 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
           <div className="map-overlay">
-            <h3>Forged Remotely.</h3>
-            <p>Deployed Globally.</p>
+            <h3>FORGED IN DURBAN.</h3>
+            <p>Global Deployment Capability</p>
           </div>
         </div>
       </section>
