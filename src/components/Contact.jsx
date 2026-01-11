@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet"; // Added Helmet import
 import "./Contact.css";
 
 export default function Contact() {
@@ -14,6 +15,12 @@ export default function Contact() {
 
   return (
     <div className="contact-page">
+      {/* ADDED SEO HELMET BLOCK */}
+      <Helmet>
+        <title>Connect | Forge Digital Engineering Lead</title>
+        <meta name="description" content="Ready to evolve your stack? Contact Forge Digital in Durban for a direct engineering consultation regarding your next high-performance static website." />
+      </Helmet>
+
       {/* 1. HERO HEADER */}
       <header className="contact-hero">
         <div className="container">
@@ -82,7 +89,7 @@ export default function Contact() {
       <section className="contact-map-area container">
         <div className="map-wrapper">
           <iframe 
-            title="Durban Map"
+            title="Durban Node Location Map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110643.0487574226!2d30.916895847353136!3d-29.84752840509653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7aa000109ef05%3A0x6bf003463a562095!2sDurban!5e0!3m2!1sen!2sza!4v1715456000000!5m2!1sen!2sza" 
             width="100%" 
             height="500" 

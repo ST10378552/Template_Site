@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet"; // Added Helmet import
 import "./Services.css";
 
 export default function Services() {
@@ -25,6 +26,12 @@ export default function Services() {
 
   return (
     <div className="services-root">
+      {/* ADDED SEO HELMET BLOCK */}
+      <Helmet>
+        <title>Our Protocol | Static Architecture & Edge Deployment</title>
+        <meta name="description" content="Explore the Forge Protocol: Hand-coded React architecture, global edge deployment on Vercel, and zero-database security for maximum performance." />
+      </Helmet>
+
       {/* AMBIENT BACKGROUND GLOWS */}
       <div className="aura-purple"></div>
       <div className="aura-mint"></div>
@@ -45,7 +52,8 @@ export default function Services() {
             </div>
             <div className="hero-visual">
               <div className="visual-frame">
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Cyber Tech" />
+                {/* Added descriptive alt text for SEO */}
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Forge Digital cyber security and elite coding infrastructure" />
                 <div className="frame-border"></div>
               </div>
             </div>
@@ -64,7 +72,8 @@ export default function Services() {
               </div>
               <div className="feature-body">
                 <p>No databases. No vulnerabilities. We build 100% static ecosystems that are invisible to common attack vectors.</p>
-                <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=600&q=80" alt="Logic" />
+                {/* Added descriptive alt text for SEO */}
+                <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=600&q=80" alt="Secure zero-database static web architecture logic" />
               </div>
               <button className="learn-more" onClick={scrollToContact}>ENQUIRE_NOW</button>
             </div>
@@ -76,7 +85,8 @@ export default function Services() {
               </div>
               <div className="feature-body">
                 <p>Your site lives on the Vercel global edge. Content is served from the closest node to your user for zero latency.</p>
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Global" />
+                {/* Added descriptive alt text for SEO */}
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Global edge computing network visualization for Vercel deployment" />
               </div>
               <button className="learn-more" onClick={scrollToContact}>ENQUIRE_NOW</button>
             </div>
@@ -88,7 +98,8 @@ export default function Services() {
               </div>
               <div className="feature-body">
                 <p>No templates. We hand-code every pixel in VS Code to ensure your brand stands out with high-end digital aesthetics.</p>
-                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=600&q=80" alt="Design" />
+                {/* Added descriptive alt text for SEO */}
+                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=600&q=80" alt="Bespoke digital design and high-end web aesthetics hand-coded in VS Code" />
               </div>
               <button className="learn-more" onClick={scrollToContact}>ENQUIRE_NOW</button>
             </div>

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet"; // Added Helmet import
 import "./AboutUs.css";
 
 export default function AboutUs() {
@@ -17,6 +18,12 @@ export default function AboutUs() {
 
   return (
     <div className="about-editorial-root">
+      {/* ADDED SEO HELMET BLOCK */}
+      <Helmet>
+        <title>About the Duo | Forge Digital Founders Durban</title>
+        <meta name="description" content="Founded by two BSc graduates from Varsity College Durban North. We specialize in bespoke, hand-coded React static engineering." />
+      </Helmet>
+
       {/* GLOW DECORATIONS */}
       <div className="bg-glow-1"></div>
       <div className="bg-glow-2"></div>
@@ -40,7 +47,8 @@ export default function AboutUs() {
             </div>
             <div className="manifesto-visual reveal-on-scroll">
               <div className="image-stack">
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Tech Setup" className="main-img" />
+                {/* Added descriptive alt text for SEO */}
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Forge Digital laboratory technical setup with server hardware" className="main-img" />
                 <div className="visual-accent-box"></div>
               </div>
               <div className="visual-tag">FORGED // 2026_PROTOCOL</div>
@@ -79,7 +87,7 @@ export default function AboutUs() {
           </div>
           <div className="lab-bento-grid">
             <div className="bento-main reveal-on-scroll">
-               <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" alt="Code" />
+               <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" alt="Close-up of clean optimized React and Next.js source code" />
                <div className="bento-info">
                   <h4>Hand-Written Excellence</h4>
                   <p>No templates. No page builders. Just raw, optimized TypeScript and Next.js 15.</p>
@@ -90,14 +98,14 @@ export default function AboutUs() {
                     <strong>99.9%</strong>
                     <span>UPTIME_GAUGE</span>
                 </div>
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Precision" />
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Precision engineering and technical hardware" />
             </div>
             <div className="bento-bottom reveal-on-scroll" style={{ transitionDelay: '0.2s' }}>
                <div className="bento-info">
                   <h4>Durban Edge</h4>
                   <p>Built locally, deployed globally via Vercel Edge Runtime.</p>
                </div>
-               <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Global" />
+               <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Global digital network representing Vercel Edge Runtime" />
             </div>
           </div>
         </div>
