@@ -237,7 +237,80 @@ body {
 @keyframes scan { 0% { top: 0%; } 100% { top: 100%; } }
 @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-@media (max-width: 1000px) {
-  .hero-main-grid, .bento-layout, .test-grid { grid-template-columns: 1fr; }
-  .wide, .tall { grid-column: span 1; grid-row: span 1; }
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+  /* 1. Hero Section Fixes */
+  .hero-v2 {
+    padding-top: 120px;
+    text-align: left;
+  }
+
+  .hero-main-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .hero-giant-text {
+    font-size: 3.2rem; /* Force a readable size on small screens */
+    line-height: 1;
+  }
+
+  .image-frame {
+    height: 300px; /* Reduce image height on mobile */
+  }
+
+  /* 2. Bento Grid Mobile Fix (Crucial) */
+  .bento-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    perspective: none; /* Disable 3D on mobile to prevent clipping */
+  }
+
+  .bento-box {
+    min-height: auto; /* Allow box to expand based on text content */
+    padding: 60px 25px 40px 25px; /* More top padding for the number, less side padding */
+    justify-content: flex-start; /* Start text from top so it doesn't get crushed at bottom */
+  }
+
+  /* Reset spans so boxes take full width */
+  .bento-box.tall, 
+  .bento-box.wide {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .box-content h3 {
+    font-size: 1.8rem;
+    white-space: normal; /* Force text to wrap */
+    word-break: break-word; /* Prevents long words from leaking out */
+    -webkit-text-fill-color: white; /* Better readability on mobile */
+  }
+
+  .box-content p {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Adjust the giant background numbers */
+  .box-num {
+    font-size: 6rem;
+    top: -5px;
+    right: 5px;
+    opacity: 0.05;
+  }
+
+  /* 3. Testimonials & Footer */
+  .test-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
 }
