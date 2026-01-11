@@ -352,20 +352,99 @@
   .editorial-title { font-size: 4rem; }
 }
 
+/* --- UPDATED RESPONSIVE FIXES --- */
 @media (max-width: 968px) {
-  .manifesto-grid, .chronicle-grid, .lab-bento-grid {
+  /* 1. Reset Grids */
+  .manifesto-grid, 
+  .chronicle-grid, 
+  .lab-bento-grid {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
+
+  /* 2. Fix Image Stack Clipping */
+  .manifesto-visual {
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .image-stack {
+    width: 90%; /* Leave room for the tag */
+    margin: 0 auto;
+    padding: 10px; /* Smaller padding on mobile */
+    /* Ensure no overflow is hidden if you want the tag visible */
+    overflow: visible; 
+  }
+
+  .visual-accent-box {
+    width: 40px;
+    height: 40px;
+    top: -5px;
+    left: -5px; /* Pull it slightly in */
+  }
+
+  .visual-tag {
+    /* Instead of floating off-screen, pin it to the bottom right edge */
+    right: -10px; 
+    bottom: 10px;
+    font-size: 0.55rem;
+    padding: 6px 15px;
+    white-space: nowrap;
+  }
+
+  /* 3. Typography Scaling */
+  .editorial-title {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .manifesto-lead {
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  /* 4. Founder Stats (The Pills) */
+  .founder-stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stat-pill {
+    width: fit-content;
+    font-size: 0.75rem;
+    padding: 12px 20px;
+  }
+
+  /* 5. Chronicle & Bento Adjustments */
+  .chronicle-item {
+    padding: 40px 20px;
+  }
+
+  .chronicle-item .year {
+    font-size: 3.5rem; /* Shrink background year */
+  }
+
   .lab-bento-grid {
     grid-template-rows: auto;
   }
+
   .bento-main, .bento-side, .bento-bottom {
-    height: 400px;
+    height: 350px;
   }
-  .founder-stats {
-    flex-direction: column;
+
+  .bento-info {
+    left: 20px;
+    bottom: 20px;
   }
+}
+
+/* Extra small device protection */
+@media (max-width: 480px) {
+  .editorial-title {
+    font-size: 2.5rem;
+  }
+  
   .visual-tag {
-    right: 0;
+    right: 0; /* Align perfectly on very small screens */
   }
 }
