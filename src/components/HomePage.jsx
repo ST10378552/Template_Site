@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet"; // Import Helmet for SEO
 import "./HomePage.css";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
+  const navigate = useNavigate();
   useEffect(() => {
     // Intersection Observer for scroll animations
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
@@ -22,13 +24,21 @@ export default function HomePage() {
   }, []);
 
   // Smooth Scroll Function for the buttons
-  const scrollToContact = (e) => {
-    e.preventDefault();
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+const scrollToContact = (e) => {
+  e.preventDefault();
+  const contactSection = document.getElementById("contact");
+  if (contactSection) {
+    // Adding an offset so the header doesn't cover the content
+    const headerOffset = 100; 
+    const elementPosition = contactSection.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  }
+};
 
   return (
     <div className="forged-root">
@@ -72,9 +82,14 @@ export default function HomePage() {
               Two BSc graduates from <strong>Varsity College Durban North</strong> building the next 
               generation of high-speed, unhackable static fortresses for local innovators.
             </p>
-            <div className="hero-actions">
-              <button className="btn-glitch" onClick={scrollToContact}>START_PROJECT</button>
-            </div>
+<div className="hero-actions">
+  <button 
+    className="btn-glitch" 
+    onClick={() => navigate('/contact')}
+  >
+    START_PROJECT
+  </button>
+</div>
           </div>
           
           <div className="hero-right animate-on-scroll">
@@ -136,9 +151,12 @@ export default function HomePage() {
             <div className="box-content">
               <h3 style={{WebkitTextFillColor: 'black', background: 'none'}}>INITIALIZE<br/>PROJECT?</h3>
               <p style={{color: 'black', opacity: 0.7, fontWeight: 500}}>Ready to build the unhackable?</p>
-              <button className="btn-minimal" onClick={scrollToContact}>
-                ESTABLISH_CONNECTION
-              </button>
+   <button 
+  className="btn-minimal" 
+  onClick={() => navigate('/contact')}
+>
+  ESTABLISH_CONNECTION
+</button>
             </div>
           </div>
         </div>
