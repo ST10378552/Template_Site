@@ -149,11 +149,11 @@ export default function HomePage() {
         <div className="test-grid">
           <div className="test-card animate-on-scroll">
             <p>"The security level they provided gave us total peace of mind. These guys are the real deal."</p>
-            <cite>— STEVE H. // FINTECH SOLUTIONS</cite>
+            <cite>— Preshen Pillay. // FINTECH SOLUTIONS</cite>
           </div>
           <div className="test-card animate-on-scroll">
             <p>"Fastest turnaround I've seen in Durban. The site feels like it's from 5 years in the future."</p>
-            <cite>— AMARA M. // CREATIVE DIRECTOR</cite>
+            <cite>— Varshan Harilal. // CREATIVE DIRECTOR</cite>
           </div>
         </div>
       </section>
