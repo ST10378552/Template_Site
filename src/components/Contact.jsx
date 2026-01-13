@@ -54,8 +54,8 @@ export default function Contact() {
             <span className="action-icon">02</span>
             <div className="action-content">
               <h4>Instant Sync</h4>
-              <p className="raw-data">WhatsApp Direct</p>
-              <a href={`https://wa.me/27000000000`} target="_blank" rel="noreferrer" className="action-button">
+              <p className="raw-data">WhatsApp Direct - 063 183 0207</p>
+              <a href={`https://wa.me/270631830207`} target="_blank" rel="noreferrer" className="action-button">
                 Start Chat →
               </a>
             </div>
