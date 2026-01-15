@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet"; // Added Helmet import
+import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom"; // Added for navigation
 import "./Services.css";
 
 export default function Services() {
+  const navigate = useNavigate(); // Initialize navigation
+
   useEffect(() => {
     const observerOptions = { threshold: 0.15 };
     const observer = new IntersectionObserver((entries) => {
@@ -16,12 +19,10 @@ export default function Services() {
     document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
   }, []);
 
-  const scrollToContact = (e) => {
+  // Updated function to handle page navigation
+  const goToContact = (e) => {
     e.preventDefault();
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
+    navigate("/contact");
   };
 
   return (
@@ -75,7 +76,7 @@ export default function Services() {
                 {/* Added descriptive alt text for SEO */}
                 <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=600&q=80" alt="Secure zero-database static web architecture logic" />
               </div>
-              <button className="learn-more" onClick={scrollToContact}>ENQUIRE_NOW</button>
+              <button className="learn-more" onClick={goToContact}>ENQUIRE_NOW</button>
             </div>
 
             <div className="service-feature reveal-on-scroll" style={{ transitionDelay: '0.2s' }}>
@@ -88,7 +89,7 @@ export default function Services() {
                 {/* Added descriptive alt text for SEO */}
                 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Global edge computing network visualization for Vercel deployment" />
               </div>
-              <button className="learn-more" onClick={scrollToContact}>ENQUIRE_NOW</button>
+              <button className="learn-more" onClick={goToContact}>ENQUIRE_NOW</button>
             </div>
 
             <div className="service-feature reveal-on-scroll" style={{ transitionDelay: '0.4s' }}>
@@ -101,7 +102,7 @@ export default function Services() {
                 {/* Added descriptive alt text for SEO */}
                 <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=600&q=80" alt="Bespoke digital design and high-end web aesthetics hand-coded in VS Code" />
               </div>
-              <button className="learn-more" onClick={scrollToContact}>ENQUIRE_NOW</button>
+              <button className="learn-more" onClick={goToContact}>ENQUIRE_NOW</button>
             </div>
           </div>
         </div>
@@ -144,7 +145,7 @@ export default function Services() {
       <footer className="services-footer reveal-on-scroll">
         <div className="container">
           <h2 className="editorial-header-small">READY TO <span className="mint-text">FORGE?</span></h2>
-          <button className="btn-heavy-cyan" onClick={scrollToContact}>INITIALIZE_BUILD</button>
+          <button className="btn-heavy-cyan" onClick={goToContact}>INITIALIZE_BUILD</button>
         </div>
       </footer>
     </div>
