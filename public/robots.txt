@@ -1,0 +1,6 @@
+# Allow all search engines to crawl the whole site
+User-agent: *
+Allow: /
+
+# Direct Google to your sitemap to help index new pages faster
+Sitemap: https://forgedigital.co.za/sitemap.xml
