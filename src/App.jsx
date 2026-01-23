@@ -10,13 +10,16 @@ import Contact from './components/Contact.jsx';
 // Global Styles
 import './App.css';
 
-// Automatically scroll to top on page change
+/**
+ * Automatically scroll to top on page change.
+ * FIXED: Removed manual document.title override to allow Helmet 
+ * and index.html to manage SEO titles consistently.
+ */
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => { 
     window.scrollTo(0, 0); 
-    // Set Document Title for SEO
-    document.title = "ForgeDigital";
+    // Manual title override removed to prevent search ranking conflicts.
   }, [pathname]);
   return null;
 }

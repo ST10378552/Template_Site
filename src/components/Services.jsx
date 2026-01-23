@@ -29,7 +29,7 @@ export default function Services() {
     <div className="services-root">
       {/* ADDED SEO HELMET BLOCK */}
       <Helmet>
-        <title>Our Protocol | Static Architecture & Edge Deployment</title>
+        <title>Forge Digital | Our Protocol & Edge Deployment</title>
         <meta name="description" content="Explore the Forge Protocol: Hand-coded React architecture, global edge deployment on Vercel, and zero-database security for maximum performance." />
       </Helmet>
 
